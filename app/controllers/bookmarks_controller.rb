@@ -1,15 +1,15 @@
 class BookmarksController < ApplicationController
 
   def new
-    # set_list
+    set_list
     @bookmark = Bookmark.new
   end
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
     set_list
-    @bookmark.save
     @bookmark.list = @list
+    @bookmark.save
 
     if @bookmark.save
       redirect_to list_path(@list)
